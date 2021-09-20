@@ -1,0 +1,18 @@
+// CENTRA ELEMENTI 
+
+
+// funzione per centrare il contenuto
+@mixin center($type: 'both') {
+    display: flex;
+
+    @if $type == 'horizontal'{
+        justify-content: center;
+    }
+    @else if $type == 'vertical' {
+        align-items: center;
+    }
+    @else if $type == 'both' {
+        justify-content: center;
+        align-items: center;
+    }
+}

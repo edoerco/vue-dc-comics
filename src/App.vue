@@ -23,14 +23,10 @@ export default {
 </script>
 
 <style lang="scss">
-// * da mettere in altro file
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  @import "./style/mixins";
+  @import "./style/vars";
 
-#app {
-  font-family: 'Roboto', sans-serif;
-}
+  // all'interno di generals ci stanno ordini generali
+  @import "./style/generals";
+
 </style>

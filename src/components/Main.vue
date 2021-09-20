@@ -8,11 +8,9 @@
       </div>
     <div class="main-bottom">
         <ul>
-            <li><img src="../assets/img/buy-comics-digital-comics.png" alt=""><span>DIGITAL COMICS</span></li>
-            <li><img src="../assets/img/buy-comics-merchandise.png" alt=""><span>DC MERCHANDISE</span></li>
-            <li><img src="../assets/img/buy-comics-subscriptions.png" alt=""><span>SUBSCRIPTION</span></li>
-            <li><img src="../assets/img/buy-comics-shop-locator.png" alt=""><span>COMIC SHOP LOCATOR</span></li>
-            <li><img src="../assets/img/buy-dc-power-visa.svg" alt=""><span>DC POWER VISA</span></li>
+            <li v-for="(icon, index) in icons" :key="index">
+                <img :src="require(`../assets/img/${icon.url + icon.path + icon.extension}`)" :alt="icon.text"><span>{{icon.text}}</span>
+            </li>
         </ul>
     </div>
   </main>
@@ -21,18 +19,59 @@
 <script>
 export default {
   name: 'Main',
+
+  data() {
+      return {
+          icons: [
+                {
+                    url: 'buy-comics',
+                    path: '-digital-comics',
+                    extension: '.png',
+                    text: 'DIGITAL COMICS'
+
+                },
+                {
+                    url: 'buy-comics',
+                    path: '-merchandise',
+                    extension: '.png',
+                    text: ' DCMERCHANDISE'
+                },
+                {
+                    url: 'buy-comics',
+                    path: '-subscriptions',
+                    extension: '.png',
+                    text: 'SUBSCRIPTIONS'
+                },
+                {
+                    url: 'buy-comics',
+                    path: '-shop-locator',
+                    extension: '.png',
+                    text: 'COMIC SHOP LOCATOR'
+                },
+                {
+                    url: 'buy-dc',
+                    path: '-power-visa',
+                    extension: '.svg',
+                    text: 'POWER VISA'
+                }
+            ]
+      }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  @import "../style/vars";
+  @import "../style/mixins";
+
+
 .main-top {
-    display: flex;
-    align-items: center;
+    @include center(vertical);
     width: 100%;
     height: 150px;
-    background-color: black;
-    color: white;
+    background-color: $dark;
+    color: $light;
 
     .text-main-top {
         margin: 0 auto;
@@ -42,26 +81,23 @@ export default {
 }
 
 .main-bottom {
-    display: flex;
-    align-items: center;
+    @include center(vertical);
     justify-content: space-around;
     width: 100%;
     height: 150px;
-    background-color: #0282f9;
+    background-color: $primary;
 
     ul {
-        display: flex;
-        align-items: center;
+        @include center(vertical);
         justify-content: space-around;
         list-style: none;
         width: 70%;
         margin: 0 auto;
 
         li {
-            display: flex;
-            align-items: center;
+            @include center(vertical);
             width: 16%;
-            color: white;
+            color: $light;
 
             span {
                 font-size: 12px;
