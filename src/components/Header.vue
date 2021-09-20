@@ -25,5 +25,29 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+header {
+    height: 120px;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
+    img {
+        max-width: 80px;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+
+        li a {
+            color: black;
+            text-decoration: none;
+            display: flex;
+            padding: 0 10px;
+            font-weight: 600;
+        }
+    }
+}
 </style>
