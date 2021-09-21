@@ -1,22 +1,27 @@
 <template>
-  <main>
-      <div class="main-top">
-        <div class="icon-main-top">
-            <div class="icon" v-for="(card, index) in cards" :key="index">
-                <div class="img-box">
-                    <img :src="card.thumb" :alt="card.series"> 
+    <main>
+        <div class="main-top">
+            <div class="icon-main-top">
+                <div class="current-series">
+                    <h3>CURRENT SERIES</h3>
                 </div>
-                <span>{{card.series}}</span>
+                <div class="icon" v-for="(card, index) in cards" :key="index">
+                    <div class="img-box">
+                        <img :src="card.thumb" :alt="card.series"> 
+                    </div>
+                    <span>{{card.series.toUpperCase()}}</span>
+                </div>
             </div>
+            <button>LOAD MORE</button>
         </div>
-      </div>
-    <div class="main-bottom">
-        <ul>
-            <li v-for="(icon, index) in icons" :key="index">
-                <img :src="require(`../assets/img/${icon.url + icon.path + icon.extension}`)" :alt="icon.text"><span>{{icon.text}}</span>
-            </li>
-        </ul>
-    </div>
+
+        <div class="main-bottom">
+            <ul>
+                <li v-for="(icon, index) in icons" :key="index">
+                    <img :src="require(`../assets/img/${icon.url + icon.path + icon.extension}`)" :alt="icon.text"><span>{{icon.text}}</span>
+                </li>
+            </ul>
+        </div>
   </main>
 </template>
 
@@ -77,31 +82,66 @@ export default {
 
 .main-top {
     @include center(vertical);
+    flex-direction: column;
     width: 100%;
-    height: 700px;
     background-color: $dark;
     color: $light;
 
+    .current-series{
+        position: absolute;
+        top: -25px; 
+        left: 30px;
+        background-color: $primary;
+        padding: 10px 30px;
+    }
+
     .icon-main-top {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: baseline;
         margin: 0 auto;
         width: 70%;
         height: 100%;
         font-size: 25px;
-        background-color: lightpink;
+        padding: 30px;
 
         .icon {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
             width: calc(100% / 6);
 
-            img {
-                height: 200px;
-                width: 200px;
+            .img-box {
+                padding: 15px;
+                width: 100%;
+                height: 210px;
+
+                img {
+                    object-fit: cover;
+                    object-position: top;
+                    height: 100%;
+                    width: 100%;
+                }
             }
+
+            span {
+                padding: 15px;
+                font-size: 14px;
+            }
+
         }
+    }
+
+    button {
+        color: $light;
+        background-color: $primary;
+        width: 200px;
+        height: 40px;
+        border-style: none;
+        margin-bottom: 20px;
     }
 }
 
