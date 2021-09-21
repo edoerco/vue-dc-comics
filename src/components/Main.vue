@@ -1,9 +1,13 @@
 <template>
   <main>
       <div class="main-top">
-        <div class="text-main-top">
-            <p> -- Content goes here -- </p>
-
+        <div class="icon-main-top">
+            <div class="icon" v-for="(card, index) in cards" :key="index">
+                <div class="img-box">
+                    <img :src="card.thumb" :alt="card.series"> 
+                </div>
+                <span>{{card.series}}</span>
+            </div>
         </div>
       </div>
     <div class="main-bottom">
@@ -17,8 +21,12 @@
 </template>
 
 <script>
+import cards from '@/data/dc-comics.js'
+
+
 export default {
   name: 'Main',
+//   devo importare 'array'
 
   data() {
       return {
@@ -54,7 +62,8 @@ export default {
                     extension: '.svg',
                     text: 'POWER VISA'
                 }
-            ]
+            ],
+            cards: cards
       }
   }
 }
@@ -69,14 +78,30 @@ export default {
 .main-top {
     @include center(vertical);
     width: 100%;
-    height: 150px;
+    height: 700px;
     background-color: $dark;
     color: $light;
 
-    .text-main-top {
+    .icon-main-top {
+        display: flex;
+        flex-wrap: wrap;
         margin: 0 auto;
         width: 70%;
+        height: 100%;
         font-size: 25px;
+        background-color: lightpink;
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% / 6);
+
+            img {
+                height: 200px;
+                width: 200px;
+            }
+        }
     }
 }
 
@@ -96,6 +121,7 @@ export default {
 
         li {
             @include center(vertical);
+            justify-content: center;
             width: 16%;
             color: $light;
 
